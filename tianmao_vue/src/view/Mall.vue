@@ -30,11 +30,9 @@
         <div class="Mall_head_center_list2">
           <div class="swiper-container" ref="swiper">
             <div class="swiper-wrapper">
-              <div
-                class="swiper-slide"
-                v-for="(banner,index) in categoryTitle"
-                :key="index"
-              >{{banner}}</div>
+              <div class="swiper-slide" v-for="(banner,index) in list" :key="index">
+                <router-link tag="div" :to="`/mall/search/${banner.id}`">{{banner.name}}</router-link>
+              </div>
             </div>
           </div>
         </div>
@@ -48,7 +46,12 @@
           <span @click="toggleSwiper">x</span>
         </div>
         <ul>
-          <li v-for="(item,index) in list" :key="index" class="list">
+          <li
+            v-for="(item,index) in categoryTitle"
+            @click="gotodetail(item.id)"
+            :key="index"
+            class="list"
+          >
             <img :src="item.imageUrl" alt>
             <span>{{item.name}}</span>
           </li>
@@ -70,24 +73,7 @@ export default {
       list: [],
       isShow: false,
       showSwiper: true,
-      categoryTitle: [
-        "女装",
-        "男装",
-        "美妆推荐",
-        "配饰",
-        "女鞋",
-        "男鞋",
-        "零食王国",
-        "内衣袜子",
-        "母婴用品",
-        "箱包",
-        "个人洗护",
-        "手机周边",
-        "数码家电",
-        "成人用品",
-        "日用家居",
-        "文体娱乐"
-      ]
+      categoryTitle: []
     };
   },
   created() {
@@ -97,7 +83,15 @@ export default {
       });
     });
     this.$http.getMallbannerList().then(resp => {
+      this.categoryTitle = resp.list;
       this.list = resp.list;
+      const fi = this.list.shift();
+      this.categoryTitle = this.categoryTitle.concat(fi);
+      this.$nextTick().then(() => {
+        // 处理默认的跳转，如果路由有带cateID，就使用路由的cateID, 如果没有，就跳到第一项
+        const { id = 1 } = this.$route.params;
+        this.$router.push(`/mall/search/${id}`);
+      });
     });
   },
   methods: {
@@ -115,6 +109,9 @@ export default {
     },
     backTo() {
       this.$router.go(-1);
+    },
+    gotodetail(id) {
+      this.$router.push(`/mall/search/${id}`);
     }
   }
 };
@@ -136,6 +133,13 @@ export default {
       line-height: 0.5rem;
       width: auto !important;
       margin: 0 0.09rem;
+      border-bottom: 2px solid #eee;
+      .router-link-active,
+      .router-link-exact-active {
+        color: #26a2ff;
+        border-bottom-color: #26a2ff;
+        background-color: #fff;
+      }
     }
   }
 }

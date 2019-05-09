@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Indicator, Toast } from 'mint-ui'
 
 const ajax = axios.create({
-    baseURL: 'http://www.xiongmaoyouxuan.com'
+    // baseURL: 'http://www.xiongmaoyouxuan.com'
 })
 
 ajax.interceptors.request.use(config => {
@@ -23,8 +23,18 @@ ajax.interceptors.response.use(resp => {
     }
 })
 
+//获取首页的数据
+export const getHomeData = (start = 1) => {
+    return ajax.get(`/api/tab/1/feeds?start=${start}&sort=0`)
+}
+
 export const getMallList = () => {
     return ajax.get("/api/tab/3?start=0")
+}
+
+// 获取商品列表
+export const getProductList = (cateID, start = 0) => {
+    return ajax.get(`/api/tab/${cateID}?start=${start}`)
 }
 
 export const getMallbannerList = () => {

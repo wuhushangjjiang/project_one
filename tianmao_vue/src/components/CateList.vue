@@ -26,14 +26,14 @@ export default {
 
 <style lang="scss" scoped>
 .datu {
-  width: 1.86rem;
+  width: 48%;
   height: 3.33rem;
   &_img {
-    width: 1.86rem;
+    width: 100%;
     height: 2.79rem;
   }
   .title {
-    width: 1.86rem;
+    width: 100%;
     height: 0.18rem;
     font-size: 0.12rem;
     line-height: 0.18rem;
