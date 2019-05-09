@@ -9,14 +9,18 @@
             <input type="text" placeholder="清风抽纸">
         </div>
         <div class="jd-home-header_login">
-            <span>登陆</span>
+            <span @click="Login">登陆</span>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
+    methods:{
+        Login(){
+            this.$router.push('/login')
+        }
+    }
 }
 </script>
 

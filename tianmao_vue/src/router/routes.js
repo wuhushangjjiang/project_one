@@ -4,11 +4,11 @@ const Categroy = () => import('@/view/Categroy')
 const Home =()=>import('@/view/Home')
 const JdFooter =() =>import('@/components/JdFooter')
 const JdHeader =() =>import('@/components/JdHeader')
+const Login = () =>import('@/view/Login')
 export default [
     {
         path:'/',
         redirect:'/home'
-
     },
     {
         path: '/home',
@@ -31,5 +31,10 @@ export default [
                 component: Categroy
             }
         ]
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component:Login
     }
 ]
