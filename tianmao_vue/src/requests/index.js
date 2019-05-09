@@ -45,3 +45,8 @@ export const getMallbannerList = () => {
 export const getProductDetails = (id) => {
     return ajax.get(`/api/detail?id=${id}`)
 }
+
+//请求购物车页列表数据
+export const getcartdata = () => {
+    return ajax.get('/api/tab/5?start=0')
+}

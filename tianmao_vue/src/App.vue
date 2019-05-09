@@ -93,21 +93,9 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
-html {
-  font-size: 100px;
-}
-/* // HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+// HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
   display: block;
 }
 body {
@@ -139,3 +127,4 @@ a {
   }
 }
 </style>
+

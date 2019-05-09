@@ -62,5 +62,12 @@ export default [
         components: {
             default: Register
         }
+    },
+    {
+        path: '/cart',
+        name: 'cart',
+        components: {
+            default: JdCart
+        }
     }
 ]
