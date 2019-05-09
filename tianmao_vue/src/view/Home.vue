@@ -4,7 +4,7 @@
       <JdHeader></JdHeader>
     </div>
     <div class="home-main" @mousewheel="mainscroll($event)">
-      <div class="swiper-container" >
+      <div class="swiper-containers" >
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(img,index) in swiperData" :key="index">
             <router-link to="/">
@@ -26,24 +26,15 @@
           <img src="https://m.360buyimg.com/mobilecms/s250x200_jfs/t1/37352/25/8296/81922/5cce4a0aE4a927c71/7f29c654108b76ba.jpg!q70.jpg.dpg" alt="">
         </div>
       </div>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
-      <li>dadad</li>
+      <div class="home-main-lei">
+        <img src="@/assets/jdliebiao.jpg" alt="">
+      </div>
+      <div class="home-main-bulletin">
+        <Bulletin></Bulletin>
+      </div>
+      <div class="home-main-item">
+        <ProductItem></ProductItem>
+      </div>
     </div>
 
     <div class="home-footer">
@@ -55,8 +46,10 @@
 <script>
 import JdHeader from "@/components/JdHeader";
 import JdFooter from "@/components/JdFooter";
+import Bulletin from "@/components/Bulletin";
 import Swiper from "swiper/dist/js/swiper.min.js";
 import "swiper/dist/css/swiper.css";
+import ProductItem  from "@/components/ProductItem"
 export default {
   data() {
     return {
@@ -72,7 +65,9 @@ export default {
   },
   components: {
     JdHeader,
-    JdFooter
+    JdFooter,
+    Bulletin,
+    ProductItem
   },
   created() {
     this.$nextTick(() => {
@@ -93,8 +88,8 @@ export default {
       }
     },
     banner() {
-      var mySwiper = new Swiper(".swiper-container", {
-        autoplay:true,
+      var mySwiper = new Swiper(".swiper-containers", {
+        autoplay: true,
         loop: true,
         pagination: {
           el: ".swiper-pagination"
@@ -125,12 +120,14 @@ img{
     height: 0.44rem;
   }
   .home-main {
+
     margin-top: -0.44rem;
     flex: 1;
-    overflow: auto;
-    .swiper-container {
+    overflow-x:hidden;
+    .swiper-containers {
       width: 100%;
       height: 1.83rem;
+      position: relative;
       img{
         width: 100%;
         height: 1.83rem;          
@@ -146,11 +143,22 @@ img{
         width: 1.25rem;
       }
     }
+    .home-main-lei{
+      width:3.75rem;
+      height: 1.60rem;
+      img{
+        max-width: 100%;
+      }
+    }
+    .home-main-bulletin{
+      width: 100%;
+      height: 1.9rem;
+    }
   }
   .home-footer {
     width: 3.75rem;
     height: 0.5rem;
-    background-color: green;
+    background-color: yellow;
   }
 }
 </style>

@@ -16,7 +16,7 @@ export default [
         components: {
             default:Home,
             jdfooter:JdFooter,
-            jdheader:JdHeader
+            jdheader:JdHeader,
         }
     },
     {
