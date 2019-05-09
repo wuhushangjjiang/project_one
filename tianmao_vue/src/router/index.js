@@ -1,10 +1,9 @@
-import vue from 'vue'
-import vueRouter from 'vue-router'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import routes from './routes'
 
-import routes from './router'
+Vue.use(VueRouter)
 
-vue.use(vueRouter)
-
-export default new vueRouter({
-    routes
+export default new VueRouter({
+    routes,
 })
