@@ -1,7 +1,7 @@
 <template>
   <div class="details-name">
     <label class="checkbox">
-      <input type="checkbox" :checked="ischecked">
+      <input type="checkbox" @click="inputischecked(id)" :checked="ischecked">
       <span></span>
     </label>
     <div class="details-img">
@@ -26,7 +26,7 @@
         </div>
       </div>
       <span class="delete">
-        <em>删除</em>
+        <em @click="deleteev(id)">删除</em>
       </span>
     </div>
   </div>
@@ -65,7 +65,9 @@ export default {
   methods: {
     ...mapMutations([
       'reducecount',
-      'pluscont'
+      'pluscont',
+      'inputischecked',
+      'deleteev'
     ])
   }
 };

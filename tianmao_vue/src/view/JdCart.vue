@@ -1,7 +1,7 @@
 <template>
   <div class="jd-cart">
     <div class="jd-cart-header">
-      <div class="jd-cart-header-left">
+      <div class="jd-cart-header-left" @click="back">
         <span>&#xe60c;</span>
       </div>
       <div class="jd-cart-header-center">
@@ -45,16 +45,22 @@
             <span>编辑商品</span>
           </div>
         </div>
-        <JdCartContent
-          v-for="item in cart"
-          :key="item.id"
-          :id="item.id"
-          :title="item.title"
-          :img="item.img"
-          :price="item.price"
-          :ischecked="item.ischecked"
-          :count="item.count"
-        ></JdCartContent>
+        <div v-if="cartpage" class="cartpage">
+          <img src="@/assets/jingdong.png" alt="">
+          <p>购物车空空如也，快去逛逛吧~</p>
+        </div>
+        <div v-else>
+          <JdCartContent
+            v-for="item in cart"
+            :key="item.id"
+            :id="item.id"
+            :title="item.title"
+            :img="item.img"
+            :price="item.price"
+            :ischecked="item.ischecked"
+            :count="item.count"
+          ></JdCartContent>
+        </div>
       </div>
       <div style="text-align:center">可能你还想要</div>
       <div class="jd-cart-main__details">
@@ -68,10 +74,10 @@
         ></JdCartList>
       </div>
     </div>
-    <div class="jd-cart-footer">
+    <div class="jd-cart-footer" v-if="!cartpage">
       <div class="jd-cart-footer__allelection">
         <label class="checkbox">
-          <input type="checkbox">
+          <input type="checkbox" :checked="isallchecked" @change="isallcartchecked"/>
           <span></span>
         </label>
         <span>全选</span>
@@ -107,7 +113,7 @@
 <script>
 import JdCartContent from "@/components/JdCartContent";
 import JdCartList from "@/components/JdCartList";
-import {mapState, mapGetters} from 'vuex'
+import {mapState, mapGetters, mapMutations} from 'vuex'
 export default {
   components: {
     JdCartContent,
@@ -121,8 +127,11 @@ export default {
     ...mapGetters([
       'countTotal',
       'checkedtrue',
-      'totalPrice'
-    ])
+      'totalPrice',
+      'cartpage',
+      'isallchecked'
+    ]),
+    
   },
   data() {
     return {
@@ -141,6 +150,12 @@ export default {
     headerEv() {
       this.headerBl = !this.headerBl;
     },
+    ...mapMutations([
+      'isallcartchecked'
+    ]),
+    back(){
+      this.$router.go(-1)
+    }
   }
 };
 
@@ -241,6 +256,23 @@ export default {
           .top-edit {
             font-size: 0.14rem;
             color: #e4393c;
+          }
+        }
+        .cartpage{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          box-sizing: border-box;
+          margin: .1rem 0;
+          > img{
+            width: .9rem;
+            height: .9rem;
+          }
+          > p{
+            display: block;
+            font-size: .16rem;
+            color: rgba(51,51,51,.66);
+            padding: .08rem 0;
           }
         }
       }
