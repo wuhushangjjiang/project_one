@@ -15,13 +15,9 @@
     "sass-loader": "^7.1.0",
     "swiper": "^4.5.0",
     "vue": "^2.6.10",
-<<<<<<< HEAD
     "vue-awesome-swiper": "^3.1.3",
-    "vue-router": "^3.0.6"
-=======
     "vue-router": "^3.0.6",
     "vuex": "^3.1.0"
->>>>>>> 4c42ff5486330c0d6726faef3fe983a416b8589c
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
