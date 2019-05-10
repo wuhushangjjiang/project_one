@@ -142,8 +142,7 @@ export default {
   created () {
     this.$http.getcartdata()
       .then(resp => {
-        const {data} = resp
-        this.cartlistdata = data.items.list
+        this.cartlistdata = resp.items.list
       })
   },
   methods: {

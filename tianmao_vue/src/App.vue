@@ -1,8 +1,11 @@
 <template>
-  <div class="jdProject">
-    <router-view>
-
-    </router-view>
+  <div id="app" class="app">
+    <div class="App_main">
+      <router-view></router-view>
+    </div>
+    <div class="App_footer">
+      <router-view name="jdfooter"></router-view>
+    </div>
   </div>
 </template>
 
@@ -25,23 +28,64 @@ export default {
       win.addEventListener("load", setFont, false);
     })(window, document);
   }
-}
+};
 </script>
 
-<style>
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+<style lang="scss">
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+address,
+em,
+img,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -56,29 +100,31 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+  font-size: 12px;
 }
-ol, ul {
+ol,
+ul {
   list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 html,
-body{
-  height:100%;
-  font-size: 0.12rem
+body {
+  height: 100%;
 }
-.jdProject{
-  height: 100%
+a {
+  text-decoration: none;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .App_main {
+    flex: 1;
+    overflow-x: hidden;
+  }
 }
 </style>
 
