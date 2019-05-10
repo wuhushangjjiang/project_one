@@ -37,4 +37,34 @@ export default {
       return item
     })
   },
+  //input事件
+  inputischecked(state, id){
+    return state.cart.filter(item => item.id === id)
+      .map(item => {
+        return item.ischecked = !item.ischecked
+      })
+  },
+  //删除计算
+  deleteev(state, id){ 
+    return state.cart.map((item, index) => {
+      if(item.id === id){
+        state.cart.splice(index, 1)
+      }
+    })
+  },
+  //全选按钮
+  isallcartchecked(state){
+    if(state.cart.every(item => item.ischecked === true)){
+      state.cart = state.cart.map(item => {
+        item.ischecked = false
+        return item
+      })
+    }else{
+      state.cart = state.cart.map(item => {
+        item.ischecked = true
+        return item
+      })
+    }
+    console.log('aaa')
+  }
 }
