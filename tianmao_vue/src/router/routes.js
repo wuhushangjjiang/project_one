@@ -6,6 +6,7 @@ const Mine = () => import('@/view/Mine')
 const Register = () => import('@/view/Register')
 const Home = () => import('@/view/Home')
 const Login = () => import('@/view/Login')
+const JdCart = () => import('@/view/JdCart')
 
 export default [
     {
