@@ -1,7 +1,7 @@
 <template>
   <div class="jd-cart">
     <div class="jd-cart-header">
-      <div class="jd-cart-header-left">
+      <div class="jd-cart-header-left" @click="back">
         <span>&#xe60c;</span>
       </div>
       <div class="jd-cart-header-center">
@@ -133,14 +133,16 @@ export default {
   created () {
     this.$http.getcartdata()
       .then(resp => {
-        const {data} = resp
-        this.cartlistdata = data.items.list
+        this.cartlistdata = resp.items.list
       })
   },
   methods: {
     headerEv() {
       this.headerBl = !this.headerBl;
     },
+    back(){
+      this.$router.go(-1);
+    }
   }
 };
 

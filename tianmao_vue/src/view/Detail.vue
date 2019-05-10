@@ -20,20 +20,23 @@
       <div class="detail_shop_price">￥{{price}}</div>
       <div class="detail_shop_title">{{title}}</div>
     </div>
-    <mt-button type="primary" style="width:100%;">加入购物车</mt-button>
+    <mt-button @click="addtocart({id, title, price, img})" type="primary" style="width:100%;">加入购物车</mt-button>
   </div>
 </template>
 
 <script>
 import Swiper from "swiper/dist/js/swiper.min.js";
 import "swiper/dist/css/swiper.css";
+import {mapMutations} from 'vuex'
 export default {
   data() {
     return {
       headshow: false,
       img_swiper: [],
       price: "",
-      title: ""
+      title: "",
+      id:'',
+      img:''
     };
   },
   methods: {
@@ -43,6 +46,8 @@ export default {
         this.img_swiper = resp.detail.photo;
         this.price = resp.detail.price;
         this.title = resp.detail.title;
+        this.id = resp.detail.id;
+        this.img = resp.detail.image;
         this.$nextTick(() => {
           this.initSwiper();
         });
@@ -70,7 +75,10 @@ export default {
       } else {
         this.headshow = false;
       }
-    }
+    },
+    ...mapMutations([
+      'addtocart'
+    ])
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
